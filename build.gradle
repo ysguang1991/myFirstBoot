@@ -1,0 +1,39 @@
+buildscript {
+    ext {
+        springBootVersion = '2.2.5.RELEASE'
+        springCloudVersion = '2.2.2.RELEASE'
+        springDataVersion = '2.2.5.RELEASE'
+        springFrameworkVersion = '5.2.4.RELEASE'
+    }
+}
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'myboot'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://maven.aliyun.com/repository/jcenter/" }
+    maven { url "https://maven.aliyun.com/repository/release/" }
+    maven { url "https://maven.aliyun.com/repository/public/" }
+    maven { url "https://maven.aliyun.com/repository/central/" }
+    maven { url "https://maven.aliyun.com/repository/google/" }
+    maven { url "https://maven.aliyun.com/repository/gradle-plugin/" }
+    maven { url "https://maven.aliyun.com/repository/spring/" }
+    maven { url "https://maven.aliyun.com/repository/spring-plugin/" }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: "${springBootVersion}"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "${springBootVersion}"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: "${springBootVersion}"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: "${springBootVersion}"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${springBootVersion}"
+}
