@@ -36,5 +36,6 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: "${springBootVersion}"
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: "${springBootVersion}"
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${springBootVersion}"
-    implementation group: 'org.springframework.data', name: 'spring-boot-starter-data-redis', version: "${springBootVersion}"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.2.2.RELEASE'
+    implementation group: 'redis.clients', name: 'jedis', version: '2.10.2', force: true
 }
