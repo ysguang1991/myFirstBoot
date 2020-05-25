@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@RestController
+
 public class TestService {
 
     @Autowired
