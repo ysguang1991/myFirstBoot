@@ -18,12 +18,9 @@ public class DataSouceConfig {
     private int maxActive;
     private static final String DEFAULT_VALIDATION_SQL = "select 1";
 
-    @Value("${spring.datasource.url}")
-    private String url;
-    @Value("${spring.datasource.username}")
-    private String username;
-    @Value("${spring.datasource.password}")
-    private String password;
+    private String url="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8";
+    private String username="root";
+    private String password="123456";
 
 
     @Bean
