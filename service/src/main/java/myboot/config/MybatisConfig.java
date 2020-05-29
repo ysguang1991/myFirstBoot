@@ -2,9 +2,11 @@ package myboot.config;
 
 import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
@@ -15,9 +17,10 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
+@MapperScan(value = "myboot.mapper", sqlSessionFactoryRef = "sqlSessionFactoryBean")
 public class MybatisConfig {
     private String defaultConfigLocations = "mybatis-config.xml";
-    private List<String> mapperLocations = Arrays.asList("mapper/*.xml", "mapper/contact/*.xml");
+    private List<String> mapperLocations = Arrays.asList("mapper/*.xml");
 
 //    @Bean
 //    public SQLExecInterceptor sqlExecInterceptor() {
