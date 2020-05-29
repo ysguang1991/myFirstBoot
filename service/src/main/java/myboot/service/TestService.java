@@ -11,6 +11,7 @@ import sun.nio.ch.ThreadPool;
 import javax.annotation.Resource;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 
 @RestController
@@ -21,6 +22,7 @@ public class TestService {
 
     @GetMapping("/test")
     public String test() {
+        Logger.getGlobal().info("111");
         redisTemplate.opsForValue().set("test", "ysg");
 
         return redisTemplate.opsForValue().get("test");
@@ -31,14 +33,12 @@ public class TestService {
 
     @GetMapping("/test_insert")
     public Integer testInsert(){
+
         int ysg = testMapper.insert("ysg", 18);
         return ysg;
     }
 
     public static void main(String[] args) {
-
-
-
 //        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
 //                .setNameFormat("demo-pool-%d").build();
 //        ExecutorService singleThreadPool = new ThreadPoolExecutor(1, 1,
@@ -66,5 +66,27 @@ public class TestService {
 //            });
 //        }
 //        singleThreadPool.shutdown();
+
+        ExecutorService executors=Executors.newFixedThreadPool(3);
+        CountDownLatch countDownLatch = new CountDownLatch(100);
+        AtomicInteger test = new AtomicInteger();
+        for(int i=test.get();i<100;i++){
+            executors.submit(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("第" + test.getAndAdd(1) + "次调用");
+                    countDownLatch.countDown();
+                }
+            });
+        }
+        System.out.println("等待中!");
+        try {
+            countDownLatch.await();
+        }catch (InterruptedException t){
+            System.out.println("线程终止失败!");
+            executors.shutdown();
+        }
+        System.out.println("释放线程池!");
+        executors.shutdown();
     }
 }
