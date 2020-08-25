@@ -15,7 +15,7 @@ public class DataSouceConfig {
     private String driverName = "com.mysql.cj.jdbc.Driver";
 
     @Value("${maxActive:20}")
-    private int maxActive;
+    public int maxActive;
     private static final String DEFAULT_VALIDATION_SQL = "select 1";
 
     private String url="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
