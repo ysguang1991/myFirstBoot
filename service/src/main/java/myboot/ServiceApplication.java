@@ -16,16 +16,5 @@ import java.util.Properties;
 public class ServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServiceApplication.class, args);
-
-        try {
-
-            Resource resource = new ClassPathResource("application.properties");
-            Properties props = PropertiesLoaderUtils.loadProperties(resource);
-            String testValue = props.getProperty("testValue");
-            System.out.println(testValue);
-        } catch (Throwable t) {
-
-        }
-
     }
 }

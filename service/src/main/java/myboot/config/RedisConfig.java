@@ -18,11 +18,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
     @Bean(name = "redisTemplate")
-    @Primary
     public RedisTemplate<String, Object> redisTemplate() {
         RedisStandaloneConfiguration configuration=new RedisStandaloneConfiguration();
         configuration.setPassword("123456");
-        configuration.setHostName("127.0.0.1");
+        configuration.setHostName("http://127.0.0.1");
         configuration.setPort(6379);
         LettuceConnectionFactory connectionFactory =new LettuceConnectionFactory(configuration);
         RedisTemplate<String, Object> template = new RedisTemplate<>();
