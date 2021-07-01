@@ -60,5 +60,8 @@ dependencies {
     //日志
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '2.3.0.RELEASE'
 
+    //canal
+    implementation group: 'com.alibaba.otter', name: 'canal.client', version: '1.1.4'
+
 
 }
